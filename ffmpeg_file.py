@@ -55,7 +55,7 @@ def organize_frames(fsize):
       os.makedirs(os.path.join(organized_dir,f'{x}'),exist_ok=True)
       shutil.copy(os.path.join(output_dir,'All_Frames',f'{images_sorted[i]}.png'),os.path.join(organized_dir,f'{x}',f'{i}.png'))
       y += 1
-      if y == fsize:
+      if y == fsize + 1:
         shutil.copy(os.path.join(output_dir,'All_Frames',f'{images_sorted[i]}.png'),os.path.join(base_dir,f'Output_Samples',f'{i}.png'))
         x += 1
         y = 1
