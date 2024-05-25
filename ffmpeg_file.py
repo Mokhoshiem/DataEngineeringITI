@@ -20,6 +20,15 @@ input_dir = os.path.join(base_dir, 'Video_input')
 output_dir = os.path.join(base_dir, 'OutPuts')
 organized_dir = os.path.join(base_dir, 'organized_outs')
 
+def download_video(url):
+  '''''
+  Downloads video from youtube and saves it in input_dir
+  '''
+  from pytube import YouTube
+  yt = YouTube(url)
+  yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(input_dir)
+
+
 def get_frames(clp):
   '''
   Gets all Frames from video and saves them in output_dir
@@ -54,7 +63,8 @@ def organize_frames(fsize):
       with open(os.path.join(output_dir,'copyErrors.txt'),'a') as f:
         f.write(f'{e} in image {i}\n ')
 
-
+download_video('https://youtu.be/WCjLd7QAJq8?si=0pQsRSmrYl8XzKM_')
+target_video = os.path.join(input_dir, '3 Hour Timer.mp4')
 create_dirs()
 get_frames(target_video)
 organize_frames(50)
