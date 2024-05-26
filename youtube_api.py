@@ -6,7 +6,7 @@ import csv
 def get_youtube_service():
     api_service_name = "youtube"
     api_version = "v3"
-    api_key = "YOUR API KEY"
+    api_key = ""
     print('apikey',api_key)
     return googleapiclient.discovery.build(api_service_name, api_version, developerKey=api_key)
 
